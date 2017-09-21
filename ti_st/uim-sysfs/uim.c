@@ -757,14 +757,6 @@ int main(int argc, char *argv[])
 	if ((0 == lstat("/dev/tifm", &file_stat)) && chmod("/dev/tifm", 0666) < 0) {
 		UIM_ERR("unable to chmod /dev/tifm, might not exist");
 	}
-	/* change rfkill perms after insertion of BT driver which asks
-	 * the Bluetooth sub-system to create the rfkill device of type
-	 * "bluetooth"
-	 */
-	if (change_rfkill_perms() < 0) {
-		/* possible error condition */
-		UIM_ERR("rfkill not enabled in st_drv - BT on from UI might fail\n");
-	}
 
 #endif /* ANDROID */
 	/* rfkill device's open/poll/read */
